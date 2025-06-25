@@ -1,5 +1,6 @@
 ##########watermark_gui.py: [视频水印区域选择GUI界面] ##################
 # 变更记录: [2025-01-27] @李祥光 [创建图形界面用于选择水印区域]########
+# 变更记录: [2025-01-27] @李祥光 [修复预览对比窗口视频比例变形问题]########
 # 输入: [视频文件路径] | 输出: [水印区域坐标和处理后的视频]###############
 
 
@@ -506,11 +507,29 @@ class WatermarkGUI:
         # 显示图像
         def display_images():
             try:
-                # 调整图像大小
-                target_size = (350, 250)
+                ###########################修改开始 2025-01-27 李祥光  #######################
+                # 调整图像大小 - 保持长宽比例
+                # target_size = (350, 250)  # 原来的固定尺寸会导致变形
+                ###########################修改结束 2025-01-27 李祥光  #######################
                 
-                original_resized = cv2.resize(original, target_size)
-                processed_resized = cv2.resize(processed, target_size)
+                # 获取原始图像尺寸
+                h, w = original.shape[:2]
+                
+                # 计算保持比例的目标尺寸
+                max_width = 350
+                max_height = 250
+                
+                # 计算缩放比例
+                scale_w = max_width / w
+                scale_h = max_height / h
+                scale = min(scale_w, scale_h)
+                
+                # 计算新的尺寸
+                new_w = int(w * scale)
+                new_h = int(h * scale)
+                
+                original_resized = cv2.resize(original, (new_w, new_h))
+                processed_resized = cv2.resize(processed, (new_w, new_h))
                 
                 # 转换为PIL图像
                 original_rgb = cv2.cvtColor(original_resized, cv2.COLOR_BGR2RGB)
@@ -522,11 +541,17 @@ class WatermarkGUI:
                 original_photo = ImageTk.PhotoImage(original_pil)
                 processed_photo = ImageTk.PhotoImage(processed_pil)
                 
+                # 计算居中位置
+                left_x = (350 - new_w) // 2 + new_w // 2
+                left_y = (250 - new_h) // 2 + new_h // 2
+                right_x = (350 - new_w) // 2 + new_w // 2
+                right_y = (250 - new_h) // 2 + new_h // 2
+                
                 # 显示图像
-                left_canvas.create_image(175, 125, image=original_photo)
+                left_canvas.create_image(left_x, left_y, image=original_photo)
                 left_canvas.image = original_photo
                 
-                right_canvas.create_image(175, 125, image=processed_photo)
+                right_canvas.create_image(right_x, right_y, image=processed_photo)
                 right_canvas.image = processed_photo
                 
             except Exception as e:
