@@ -1,0 +1,80 @@
+{
+  "_comment": "视频去水印工具配置文件示例",
+  "_author": "@李祥光",
+  "_date": "2025-06-25",
+  "_description": "这是一个示例配置文件，展示了所有可配置的参数",
+  
+  "processing": {
+    "_comment": "处理参数设置",
+    "threshold": 60,
+    "kernel_size": 5,
+    "iterations": 2,
+    "use_gpu": false,
+    "batch_size": 1
+  },
+  
+  "output": {
+    "_comment": "输出设置",
+    "quality": "high",
+    "format": "mp4",
+    "output_dir": "output",
+    "filename_suffix": "_no_watermark",
+    "preserve_audio": true,
+    "create_backup": false,
+    "overwrite_existing": false
+  },
+  
+  "logging": {
+    "_comment": "日志设置",
+    "level": "INFO",
+    "log_to_file": true,
+    "log_to_console": true,
+    "log_dir": "logs",
+    "max_log_files": 10
+  },
+  
+  "advanced": {
+    "_comment": "高级选项",
+    "temp_dir": "temp",
+    "temp_cleanup": true,
+    "memory_limit_mb": 1024,
+    "thread_count": 4
+  },
+  
+  "presets": {
+    "_comment": "预设模式配置",
+    "fast": {
+      "threshold": 80,
+      "kernel_size": 3,
+      "iterations": 1,
+      "quality": "medium"
+    },
+    "balanced": {
+      "threshold": 60,
+      "kernel_size": 5,
+      "iterations": 2,
+      "quality": "high"
+    },
+    "precise": {
+      "threshold": 40,
+      "kernel_size": 7,
+      "iterations": 3,
+      "quality": "high"
+    },
+    "custom": {
+      "_comment": "用户自定义配置",
+      "threshold": 50,
+      "kernel_size": 6,
+      "iterations": 2,
+      "quality": "high"
+    }
+  },
+  
+  "ui": {
+    "_comment": "用户界面设置",
+    "show_progress": true,
+    "show_preview": false,
+    "auto_open_output": false,
+    "confirm_overwrite": true
+  }
+}
