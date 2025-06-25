@@ -1,0 +1,21 @@
+##########requirements.txt: 项目依赖管理文件 ##################
+# 变更记录: [2025-06-25] @李祥光 [创建项目依赖文件]########
+# 输入: [pip install命令] | 输出: [安装所需依赖包]###############
+
+# 安装命令: pip install -r requirements.txt
+
+# 核心依赖
+opencv-python>=4.8.0
+numpy>=1.24.0
+watermark-remover>=1.0.0
+
+# 图像处理相关
+Pillow>=10.0.0
+scipy>=1.11.0
+
+# 视频处理增强
+ffmpeg-python>=0.2.0
+
+# 工具库
+tqdm>=4.65.0
+colorama>=0.4.6

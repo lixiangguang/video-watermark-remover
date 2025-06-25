@@ -1,0 +1,93 @@
+##########.gitignore: Git版本控制忽略文件 ##################
+# 变更记录: [2025-06-25] @李祥光 [创建Git忽略文件]########
+# 输入: [Git操作] | 输出: [忽略指定文件和目录]###############
+
+# Python相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+PIPFILE.lock
+
+# 虚拟环境
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 项目特定文件
+# 输出视频文件
+output/*.mp4
+output/*.avi
+output/*.mov
+output/*.mkv
+output/*.wmv
+output/*.flv
+output/*.webm
+
+# 日志文件
+logs/*.log
+logs/*.txt
+
+# 临时文件
+temp/*
+!temp/README.md
+
+# 用户配置文件
+user_config.json
+my_config.json
+
+# 测试视频文件
+test_videos/
+sample_videos/
+
+# 备份文件
+*.bak
+*.backup
+*.orig
+
+# 压缩文件
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# 环境变量文件
+.env.local
+.env.development
+.env.test
+.env.production
